@@ -62,7 +62,68 @@ help - Get Detailed Help
 log - Bot Log [owner only]
 ```
 
-# How to deploy?
+# How to deploy? Simple Method
+Deploying is pretty much straight forward and is divided into several steps as follows:
+## Installing requirements
+```
+Do the Following
+1. Fork this Repo
+2. Credentials.json & Token Pickle
+3. User Session String.
+4. Click on Deploy Button, and fill the Fields then deploy app.
+
+```
+
+```
+STEP 1 :
+Signup or Login to your account then :
+- Fork this repo
+After forked, you need to upload Credentials.json, token.pickle and token_sa.pickle to your forked repo.
+If Using SA's you will also need to upload your accounts folrder.
+
+Proceed to step 2
+
+```
+
+```
+STEP 2 :
+
+## Getting Google OAuth API credential file
+
+- Visit the [Google Cloud Console](https://console.developers.google.com/apis/credentials)
+- Go to the OAuth Consent tab, fill it, and save.
+- Go to the Credentials tab and click Create Credentials -> OAuth Client ID
+- Choose Other and Create.
+- Use the download button to download your credentials.
+- Move that file to the root of mirror-bot, and rename it to credentials.json
+- Visit [Google API page](https://console.developers.google.com/apis/library)
+- Search for Drive and enable it if it is disabled
+
+- Finally, run the script to generate token file (token.pickle) for Google Drive:
+pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
+python3 generate_drive_token.py
+
+Right now we have 
+Credentials.json and token.pickle.. so Upload these files to your forked repo.
+```
+
+
+
+```
+STEP 3 :
+To get user session string use this command :
+   python3 generate_string_session.py
+```
+
+```
+STEP 4
+## Deploying
+CLICK DEPLOY BUTTON ON YOUR FORKED REPO. THATS IT !
+```
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+
+# How to deploy? Legacy Method
 Deploying is pretty much straight forward and is divided into several steps as follows:
 ## Installing requirements
 
