@@ -6,5 +6,5 @@ aria2c --enable-rpc --rpc-listen-all=false --rpc-listen-port 6800 --check-certif
    --bt-tracker="[$tracker_list]" --bt-max-peers=0 --seed-time=0.01 --min-split-size=10M \
    --follow-torrent=mem --split=10 \
    --daemon=true --allow-overwrite=true --max-overall-download-limit=$MAX_DOWNLOAD_SPEED \
-   --max-overall-upload-limit=1K --max-concurrent-downloads=$MAX_CONCURRENT_DOWNLOADS
+   --max-overall-upload-limit=1K --max-concurrent-downloads=$MAX_CONCURRENT_DOWNLOADS \
    --peer-id-prefix=-qB4250- --user-agent==qBittorrent/4.2.5
