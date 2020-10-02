@@ -6,7 +6,7 @@ download/*
 data*
 .vscode
 .idea
-*.json
+credentials.json
 *.pickle
 authorized_chats.txt
 log.txt
