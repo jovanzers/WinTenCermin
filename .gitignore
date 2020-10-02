@@ -11,3 +11,4 @@ credentials.json
 authorized_chats.txt
 log.txt
 accounts/*
+.php
