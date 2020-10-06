@@ -1,9 +1,8 @@
-# Important - Read these points first
-- Original repo is https://github.com/lzzy12/python-aria-mirror-bot
-- I have collected some cool features from various repositories and merged them in one.
-- So, credits goes to original repo holder, not to me. I have just collected them.
-- This (or any custom) repo is not supported in official bot support group.
-- So if you have any issue then check first that issue is in official repo or not, You are only allowed to report that issue in bot support group if that issue is also present in official repo.
+# Penting
+- Repo original https://github.com/lzzy12/python-aria-mirror-bot
+- So, credits dimiliki pemilik repo.
+- Repo in (atau custom repo lain) tidak disupport pada official bot support group.
+- jadi jika kamu mengalami masalah cek apakah masalah tersebut ada di repo official atau tidak, Kamu hanya boleh melaporkan masalah pada grup official jika masalah juga ada pada repo official.
 
 ## Credits :-
 - First of all, full credit goes to [Shivam Jha aka lzzy12](https://github.com/lzzy12) He build up this bot from scratch.
@@ -16,15 +15,15 @@
 ```
 - Special thanks to [archie](https://github.com/archie9211) for very much useful feature **Unzipmirror**
 - Features added from [archie's](https://github.com/archie9211) repo
+- UPTOBOX support added [jovanzers](https://github.com/jovanzers) 
 ```
 1. unzipmirror
 2. Update tracker list dynamically
 3. Fix SSL handsake error
 ```
 
-# What is this repo about?
-This is a telegram bot writen in python for mirroring files on the internet to our beloved Google Drive.
-
+# Repo apa ini?
+Ini adalah repo telegram bot yang akan mengupload file ke google drive.
 # Inspiration 
 This project is heavily inspired from @out386 's telegram bot which is written in JS.
 
@@ -48,34 +47,34 @@ This project is heavily inspired from @out386 's telegram bot which is written i
 - Index Link support
 - Shortener support
 
-## Bot commands to be set in botfather
+## Bot commands yang harus diset pada botfather
 
 ```
 mirror - Start Mirroring
 tarmirror - Upload tar (zipped) file
-unzipmirror - Extract files
-clone - copy folder to drive
-watch - mirror YT-DL support link
-tarwatch - mirror youtube playlist link as tar
-cancel - Cancel a task
-cancelall - Cancel all tasks
-del - Delete file from Drive
-list - [query] searches files in G-Drive
-status - Get Mirror Status message
-stats - Bot Usage Stats
-help - Get Detailed Help
-log - Bot Log [owner only]
+unzipmirror - Extract file
+salin - salin folder ke drive
+ytdl - mirror YT-DL support link
+tarytdl - mirror youtube playlist link sebagai tar
+batal - batalkan tugas
+batalsemua - batalkan semua tugas
+hapus - hapus file dari Drive
+daftar - [query] mencari file di G-Drive
+status - menampilkan Status Mirror
+stats - Statistik bot
+bantuan - Bantuan
+log - Bot Log [hanya pemilik]
 ```
 
 # How to deploy? Simple Method
-Deploying is pretty much straight forward and is divided into several steps as follows:
+Ikuti langkah ini:
 ## Installing requirements
 ```
-Do the Following
-1. Fork this Repo
+ikuti langkah
+1. Fork Repo ini
 2. Credentials.json & Token Pickle
 3. User Session String.
-4. Click on Deploy Button, and fill the Fields then deploy app.
+4. Klik pada tombol Deploy, dan isi kolom
 
 ```
 
@@ -95,20 +94,20 @@ STEP 2 :
 
 ## Getting Google OAuth API credential file
 
-- Visit the [Google Cloud Console](https://console.developers.google.com/apis/credentials)
-- Go to the OAuth Consent tab, fill it, and save.
-- Go to the Credentials tab and click Create Credentials -> OAuth Client ID
-- Choose Other and Create.
-- Use the download button to download your credentials.
-- Move that file to the root of mirror-bot, and rename it to credentials.json
-- Visit [Google API page](https://console.developers.google.com/apis/library)
-- Search for Drive and enable it if it is disabled
+- Buka link [Google Cloud Console](https://console.developers.google.com/apis/credentials)
+- Pergi ke OAuth Consent tab, isi terus simpan.
+- Pergi ke Credentials tab terus klik Create Credentials -> OAuth Client ID
+- Pilih Desktop dan Create.
+- Download credentials yang barusan dibuat (ada icon download gitu).
+- Pindahkan ke dalam folder projek ini terus rename jadi credentials.json
+- Pergi ke [Google API page](https://console.developers.google.com/apis/library)
+- Cari Drive terus enable jika sebelumnya disabled
+- Jalankan perintah ini untuk membuat file token (token.pickle) untuk Google Drive:
 
-- Finally, run the script to generate token file (token.pickle) for Google Drive:
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
 python3 generate_drive_token.py
 
-Right now we have 
+Sekarang kita punya 
 Credentials.json and token.pickle.. so Upload these files to your forked repo.
 ```
 
@@ -116,74 +115,71 @@ Credentials.json and token.pickle.. so Upload these files to your forked repo.
 
 ```
 STEP 3 :
-To get user session string use this command :
+Untuk mendapatkan user session string jalankan perintah :
    python3 generate_string_session.py
 ```
 
 ```
 STEP 4
 ## Deploying
-CLICK DEPLOY BUTTON ON YOUR FORKED REPO. THATS IT !
+KLIK TOMBOL DEPLOY PADA REPO YANG KAMU FORK, ITU SAJA !
 ```
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
-# How to deploy? Legacy Method
-Deploying is pretty much straight forward and is divided into several steps as follows:
+# How to deploy? Cara manual
+Ikuti langkah berikut:
 ## Installing requirements
 
-- Clone this repo:
+- Clone repo ini:
 ```
-git clone https://github.com/magneto261290/magneto-python-aria mirror-bot/
+git clone https://github.com/bigbabyboost/WinTenCermin
 cd mirror-bot
 ```
 
 - Install requirements
-For Debian based distros
+Untuk base Debian
 ```
 sudo apt install python3
 sudo snap install docker 
 ```
-- For Arch and it's derivatives:
+- Untuk Arch dan turunannya:
 ```
 sudo pacman -S docker python
 ```
 
 ## Setting up config file
+- Copy file config_sample.env dan rename jadi config.env
 ```
 cp config_sample.env config.env
 ```
-- Remove the first line saying:
+- Hapus baris ini:
 ```
 _____REMOVE_THIS_LINE_____=True
 ```
-Fill up rest of the fields. Meaning of each fields are discussed below:
-- **BOT_TOKEN** : The telegram bot token that you get from @BotFather
-- **GDRIVE_FOLDER_ID** : This is the folder ID of the Google Drive Folder to which you want to upload all the mirrors.
-- **TELEGRAPH_TOKEN** : Telegraph token generated by running :
-```
-python3 generate_telegraph_token.py
-```
-- **DOWNLOAD_DIR** : The path to the local folder where the downloads should be downloaded to
-- **DOWNLOAD_STATUS_UPDATE_INTERVAL** : A short interval of time in seconds after which the Mirror progress message is updated. (I recommend to keep it 5 seconds at least)  
-- **OWNER_ID** : The Telegram user ID (not username) of the owner of the bot
-- **AUTO_DELETE_MESSAGE_DURATION** : Interval of time (in seconds), after which the bot deletes it's message (and command message) which is expected to be viewed instantly. Note: Set to -1 to never automatically delete messages
-- **IS_TEAM_DRIVE** : (Optional field) Set to "True" if GDRIVE_FOLDER_ID is from a Team Drive else False or Leave it empty.
-- **USE_SERVICE_ACCOUNTS**: (Optional field) (Leave empty if unsure) Whether to use service accounts or not. For this to work see  "Using service accounts" section below.
-- **INDEX_URL** : (Optional field) Refer to https://github.com/maple3142/GDIndex/ The URL should not have any trailing '/'
-- **API_KEY** : This is to authenticate to your telegram account for downloading Telegram files. You can get this from https://my.telegram.org DO NOT put this in quotes.
-- **API_HASH** : This is to authenticate to your telegram account for downloading Telegram files. You can get this from https://my.telegram.org
-- **USER_SESSION_STRING** : Generate String session by [clicking here](https://generatestringsession.magneto261290.repl.run/) **OR** you can generate by running :
+Isi data sesuai permintaan
+- **BOT_TOKEN** : Telegram bot token dari @BotFather
+- **GDRIVE_FOLDER_ID** : ID Folder Google Drive buat tempat upload hasil download
+- **DOWNLOAD_DIR** : Lokasi unduhan default di servermu
+- **DOWNLOAD_STATUS_UPDATE_INTERVAL** : Lama waktu status download diupdate, default 5
+- **OWNER_ID** : user ID Telegram pembuat (bukan username). Cek id? Pake aja bot https://t.me/myidbot
+- **AUTO_DELETE_MESSAGE_DURATION** : Lama waktu untuk menghapus pesan yang dikirim ke bot
+- **IS_TEAM_DRIVE** : (optional) set "True" jika ingin menggunakan Team Drive
+- **USE_SERVICE_ACCOUNTS**: Kalau ga paham kosongin aja.
+- **INDEX_URL** : Link Google Drive Index, Baca aja di sini https://github.com/maple3142/GDIndex/
+- **API_KEY** : Buat download file dari telegram butuh API ini, dambil di https://my.telegram.org (tanpa "")
+- **API_HASH** : Buat download file dari telegram butuh API ini, dambil di https://my.telegram.org
+- **USER_SESSION_STRING** : Jalankan perintah ini untuk ngambil session string:
 ```
 python3 generate_string_session.py
 ```
-- **UPTOBOX_TOKEN**: Uptobox token to mirror uptobox links. Get it from [Uptobox Premium Account](https://uptobox.com/my_account)
-- **MEGA_API_KEY**: Mega.nz api key to mirror mega.nz links. Get it from [Mega SDK Page](https://mega.nz/sdk)
-- **MEGA_EMAIL_ID**: Your email id you used to sign up on mega.nz for using premium accounts (Leave th)
-- **MEGA_PASSWORD**: Your password for your mega.nz account 
-- **STOP_DUPLICATE_MIRROR**: (Optional field) (Leave empty if unsure) if this field is set to `True` , bot will check file in drive, if it is present in drive, downloading will ne stopped. (Note - File will be checked using filename, not using filehash, so this feature is not perfect yet)
-- **BLOCK_MEGA_LINKS**: (Optional field) If you want to remove mega.nz mirror support (bcoz it's too much buggy and unstable), set it to `True`.
-- **SHORTENER**: (Optional field) if you want to use shortener in Gdrive and index link, fill shotener url here. Examples :-
+- **MEGA_API_KEY**: API Mega.nz buat download dari mega.nz. Ambil di [Mega SDK Page](https://mega.nz/sdk)
+- **MEGA_EMAIL_ID**: Email mega.nz untuk make akun premium
+- **MEGA_PASSWORD**: Password mega.nz 
+- **UPTOBOX_TOKEN**: Uptobox token untuk mirror uptobox links. Dapatkan disini [Uptobox Premium Account](https://uptobox.com/my_account)
+- **STOP_DUPLICATE_MIRROR**: (Optional) (Kosongkan jika tidak yakin) kolom ini diset `True` , bot akan mengecek file di drive, jika sudah ada download dibatalkan. (Note - File dicek menggunakan nama file bukan hashfile, fitur belum sempurna)
+- **BLOCK_MEGA_LINKS**: (Optional) jika ingin menghapus mega.nz mirror support (karena buggy dan tidak stabil), set ke `True`
+- **SHORTENER**: (Optional) jika ingin menggunakan link shortener pada Gdrive dan index link, isi shotener url disini. Contoh :-
 
 > exe.io
 
@@ -195,26 +191,27 @@ python3 generate_string_session.py
 
 > shortzon.com
 
-Note :- Above are the supported url shorteners. Except these only some url shorteners are supported. If you want to use any other url shortener then first ask me that shortener is supported or not.
-- **SHORTENER_API**: Fill your shortener api key if you are using shortener.
+Note :- Diatas adalah url shortener yang disupport.
+- **SHORTENER_API**: Isi shortener API jika menggunakan shortener
 
-Note: You can limit maximum concurrent downloads by changing the value of MAX_CONCURRENT_DOWNLOADS in aria.sh. By default, it's set to 4
+Note: Kalian bisa atur maksimal proses download dalam 1 waktu di MAX_CONCURRENT_DOWNLOADS di aria.sh. Bawaannya itu 4
  
-## Getting Google OAuth API credential file
+## Ambil API Google OAuth credential file
 
-- Visit the [Google Cloud Console](https://console.developers.google.com/apis/credentials)
-- Go to the OAuth Consent tab, fill it, and save.
-- Go to the Credentials tab and click Create Credentials -> OAuth Client ID
-- Choose Desktop and Create.
-- Use the download button to download your credentials.
-- Move that file to the root of mirror-bot, and rename it to credentials.json
-- Visit [Google API page](https://console.developers.google.com/apis/library)
-- Search for Drive and enable it if it is disabled
-- Finally, run the script to generate token file (token.pickle) for Google Drive:
+- Buka link [Google Cloud Console](https://console.developers.google.com/apis/credentials)
+- Pergi ke OAuth Consent tab, isi terus simpan.
+- Pergi ke Credentials tab terus klik Create Credentials -> OAuth Client ID
+- Pilih Desktop dan Create.
+- Download credentials yang barusan dibuat (ada icon download gitu).
+- Pindahkan ke dalam folder projek ini terus rename jadi credentials.json
+- Pergi ke [Google API page](https://console.developers.google.com/apis/library)
+- Cari Drive terus enable klo sebelumnya disabled
+- Jalankan perintah ini untuk membuat file token (token.pickle) untuk Google Drive:
 ```
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
 python3 generate_drive_token.py
 ```
+
 ## Deploying
 
 - Start docker daemon (skip if already running):
@@ -230,37 +227,36 @@ sudo docker build . -t mirror-bot
 sudo docker run mirror-bot
 ```
 
-# Using service accounts for uploading to avoid user rate limit
-For Service Account to work, you must set USE_SERVICE_ACCOUNTS="True" in config file or environment variables
-Many thanks to [AutoRClone](https://github.com/xyou365/AutoRclone) for the scripts
+# Menggunakan Service Account
+Agar Service Account bekerja, set USE_SERVICE_ACCOUNTS="True" pada config file
+Many thanks to [AutoRClone](https://github.com/xyou365/AutoRclone) untuk scripts
 ## Generating service accounts
 Step 1. Generate service accounts [What is service account](https://cloud.google.com/iam/docs/service-accounts)
 ---------------------------------
-Let us create only the service accounts that we need. 
-**Warning:** abuse of this feature is not the aim of autorclone and we do **NOT** recommend that you make a lot of projects, just one project and 100 sa allow you plenty of use, its also possible that overabuse might get your projects banned by google. 
+Biarkan kami membuat Service Account yang dibutuhkan. 
+**Warning:** penyalahgunaan fitur ini bukanlah tujuan autorclone dan kami **TIDAK** merekomendasi membuat banyak project, hanya satu project dan 100 sa sudah cukup
 
 ```
-Note: 1 service account can copy around 750gb a day, 1 project makes 100 service accounts so thats 75tb a day, for most users this should easily suffice. 
+Note: 1 service account dapat menyalin 750gb sehari, 1 project membuat 100 service accounts jadi 75tb sehari, itu sudah cukup. 
 ```
 
 `python3 gen_sa_accounts.py --quick-setup 1 --new-only`
 
-A folder named accounts will be created which will contain keys for the service accounts created
+Sebuah folder bernama "accounts" akan dibuat yang berisi SA
 
-NOTE: If you have created SAs in past from this script, you can also just re download the keys by running:
+NOTE: Jika kamu pernah membuat SAs dari script ini, kamu dapat mendownload key langsung dengan menjalankan perintah:
 ```
 python3 gen_sa_accounts.py --download-keys project_id
 ```
-
-### Add all the service accounts to the Team Drive or folder
-- Run:
-```
-python3 add_to_team_drive.py -d SharedTeamDriveSrcID
-```
-
-# Youtube-dl authentication using .netrc file
-For using your premium accounts in youtube-dl, edit the netrc file (in the root directory of this repository) according to following format:
+# Menggunakan akun di web yang support Youtube-dl
+Klo mau make premium akun yang support di youtube-dl, ubah netrc file dengan format:
 ```
 machine host login username password my_youtube_password
 ```
-where host is the name of extractor (eg. youtube, twitch). Multiple accounts of different hosts can be added each separated by a new line
+host ini adalah website tujuan, misalnya youtube, twitch, dll. 
+klo mau lebih dari 2 akun tinggal tambahin aja di baris baru.
+
+
+# Thanks to
+- jovanzers
+- WinTenDev
