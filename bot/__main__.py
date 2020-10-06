@@ -43,15 +43,15 @@ def stats(update, context):
 @run_async
 def start(update, context):
     start_string = f'''
-This is a bot which can mirror all your links to Google drive!
-Type /{BotCommands.HelpCommand} to get a list of available commands
+Bot ini akan memirror link yang kamu kirim ke Google drive!
+Ketik /{BotCommands.HelpCommand} untuk melihat perintah yang tersedia
 '''
     sendMessage(start_string, context.bot, update)
 
 
 @run_async
 def restart(update, context):
-    restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
+    restart_message = sendMessage("Merestart, tunggu sebentar!", context.bot, update)
     # Save restart message object in order to reply to it after restarting
     fs_utils.clean_all()
     with open('restart.pickle', 'wb') as status:
@@ -75,29 +75,29 @@ def log(update, context):
 @run_async
 def bot_help(update, context):
     help_string = f'''
-/{BotCommands.HelpCommand}: To get this message
+/{BotCommands.HelpCommand}: Untuk melihat perintah ini
 
-/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to google drive
+/{BotCommands.MirrorCommand} [download_url][magnet_link]: Memirror link ke google drive
 
-/{BotCommands.UnzipMirrorCommand} [download_url][magnet_link] : starts mirroring and if downloaded file is any archive , extracts it to google drive
+/{BotCommands.UnzipMirrorCommand} [download_url][magnet_link] : Memirror dan mengekstrak jika file berbentuk arsip
 
-/{BotCommands.TarMirrorCommand} [download_url][magnet_link]: start mirroring and upload the archived (.tar) version of the download
+/{BotCommands.TarMirrorCommand} [download_url][magnet_link]: Memirror dan mengarsipkan (.tar)
 
-/{BotCommands.WatchCommand} [youtube-dl supported link]: Mirror through youtube-dl 
+/{BotCommands.WatchCommand} [youtube-dl supported link]: Memirror video 
 
-/{BotCommands.TarWatchCommand} [youtube-dl supported link]: Mirror through youtube-dl and tar before uploading
+/{BotCommands.TarWatchCommand} [youtube-dl supported link]: Memirror video dan mengarsipkan (.tar)
 
-/{BotCommands.CancelMirror} : Reply to the message by which the download was initiated and that download will be cancelled
+/{BotCommands.CancelMirror} : Balas perintah ini ke download yang ingin dibatalkan
 
-/{BotCommands.StatusCommand}: Shows a status of all the downloads
+/{BotCommands.StatusCommand}: Menampilkan status download
 
-/{BotCommands.ListCommand} [search term]: Searches the search term in the Google drive, if found replies with the link
+/{BotCommands.ListCommand} [search term]: Mencari file di google drive. jika ditemukan dibalas dengan link file
 
-/{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
+/{BotCommands.StatsCommand}: Menampilkan statistik bot
 
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by owner of the bot)
+/{BotCommands.AuthorizeCommand}: Mengijinkan user menggunakan bot (perintah khusus admin)
 
-/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
+/{BotCommands.LogCommand}: Mendapatkan log, berguna untuk memperbaiki bot crash
 
 '''
     sendMessage(help_string, context.bot, update)
@@ -109,7 +109,7 @@ def main():
     if path.exists('restart.pickle'):
         with open('restart.pickle', 'rb') as status:
             restart_message = pickle.load(status)
-        restart_message.edit_text("Restarted Successfully!")
+        restart_message.edit_text("Restart berhasil!")
         remove('restart.pickle')
 
     start_handler = CommandHandler(BotCommands.StartCommand, start,

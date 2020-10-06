@@ -131,7 +131,7 @@ class MegaDownloadHelper:
     @new_thread
     def add_download(mega_link: str, path: str, listener):
         if MEGA_API_KEY is None:
-            raise MegaDownloaderException('Mega API KEY not provided! Cannot mirror mega links')
+            raise MegaDownloaderException('Mega API KEY tidak ada, tidak dapat memirror link mega')
         executor = AsyncExecutor()
         api = MegaApi(MEGA_API_KEY, None, None, 'telegram-mirror-bot')
         mega_listener = MegaAppListener(executor.continue_event, listener)

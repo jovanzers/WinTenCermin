@@ -131,7 +131,7 @@ def get_base_name(orig_path: str):
     elif orig_path.endswith(".xar"):
         return orig_path.replace(".xar", "")
     else:
-        raise NotSupportedExtractionArchive('File format not supported for extraction')
+        raise NotSupportedExtractionArchive('Format file tidak mendukung pengekstrakan')
 
 
 def get_mime_type(file_path):

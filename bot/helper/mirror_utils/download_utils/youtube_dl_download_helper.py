@@ -65,13 +65,13 @@ class YoutubeDLHelper(DownloadHelper):
 
     def __onDownloadProgress(self, d):
         if self.is_cancelled:
-            raise ValueError("Cancelling Download..")
-        if d['status'] == "finished":
+            raise ValueError("Membatalkan Download..")
+        if d['status'] == "selesai":
             if self.is_playlist:
                 self.last_downloaded = 0
-        elif d['status'] == "downloading":
+        elif d['status'] == "mendownload":
             with self.__resource_lock:
-                self.__download_speed = d['speed']
+                self.__download_speed = d['kecepatan']
                 if self.is_playlist:
                     progress = d['downloaded_bytes'] / d['total_bytes']
                     chunk_size = d['downloaded_bytes'] - self.last_downloaded

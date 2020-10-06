@@ -53,7 +53,7 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onDownloadComplete(self):
         with download_dict_lock:
-            LOGGER.info(f"Download completed: {download_dict[self.uid].name()}")
+            LOGGER.info(f"Download berhasil: {download_dict[self.uid].name()}")
             download = download_dict[self.uid]
             name = download.name()
             size = download.size_raw()
@@ -65,8 +65,8 @@ class MirrorListener(listeners.MirrorListeners):
                     download_dict[self.uid] = TarStatus(name, m_path, size)
                 path = fs_utils.tar(m_path)
             except FileNotFoundError:
-                LOGGER.info('File to archive not found!')
-                self.onUploadError('Internal error occurred!!')
+                LOGGER.info('File arsip tidak ditemukan!')
+                self.onUploadError('Error!!')
                 return
         elif self.extract:
             download.is_extracting = True
@@ -77,19 +77,19 @@ class MirrorListener(listeners.MirrorListeners):
                 )
                 with download_dict_lock:
                     download_dict[self.uid] = ExtractStatus(name, m_path, size)
-                archive_result = subprocess.run(["extract", m_path])
+                archive_result = subprocess.run(["ekstrak", m_path])
                 if archive_result.returncode == 0:
                     threading.Thread(target=os.remove, args=(m_path,)).start()
-                    LOGGER.info(f"Deleting archive : {m_path}")
+                    LOGGER.info(f"Menghapus arsip : {m_path}")
                 else:
-                    LOGGER.warning('Unable to extract archive! Uploading anyway')
+                    LOGGER.warning('Tidak dapat mengekstrak! mengupload')
                     path = f'{DOWNLOAD_DIR}{self.uid}/{name}'
                 LOGGER.info(
                     f'got path : {path}'
                 )
 
             except NotSupportedExtractionArchive:
-                LOGGER.info("Not any valid archive, uploading file as it is.")
+                LOGGER.info("Tidak ada arsip, mengupload.")
                 path = f'{DOWNLOAD_DIR}{self.uid}/{name}'
         else:
             path = f'{DOWNLOAD_DIR}{self.uid}/{name}'
@@ -123,7 +123,7 @@ class MirrorListener(listeners.MirrorListeners):
             uname = f"@{self.message.from_user.username}"
         else:
             uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
-        msg = f"{uname} your download has been stopped due to: {error}"
+        msg = f"{uname} download dibatalkan karena: {error}"
         sendMessage(msg, self.bot, self.update)
         if count == 0:
             self.clean()
