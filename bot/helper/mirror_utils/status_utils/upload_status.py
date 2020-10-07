@@ -49,6 +49,6 @@ class UploadStatus(Status):
     def eta(self):
         try:
             seconds = (self.__size - self.obj.uploaded_bytes) / self.speed_raw()
-            return f'{get_readable_time(seconds)}'
+            return f'{get_readable_time(detik)}'
         except ZeroDivisionError:
             return '-'
