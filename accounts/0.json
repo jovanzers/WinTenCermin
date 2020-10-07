@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "skyebot",
+  "private_key_id": "f4ea5bb2720a309ee61d89157c4b4db250663cc5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDM/hEDfivXXvt1\nF2kz7jUwypMxZnvhEn6cExKGX5CJrORPfTfjcDnXNeAXgyCTKaulsiZNMd4iY0H2\nkFMGJ6qp0PEhr6SYMPs3xZeqMzE3AXkHw69afXbh8qZexEj2K3IzxiMKmEUhjwyw\nQJ6BnDVjraZyBX1SRz/e26ryz16SQ4VlqB906P7L2QNV5YQTOQhZtPZFDnFbdvpC\nf6v+8Udi7hfW2mn7WYHKIK0sYWTL/iSQeQTBBxI5vy5ngQg92fKHlnjqAKHVxmhH\n5MP/521x+VFs+87vaMvgXWw6XMLk9NQmdmWfm3HZKnlubilseP6dJcnvsF+XuBiW\nYGrTXwozAgMBAAECggEAAqbkxx6fkufefpYgx8m0nsl4HFhUO5tWz6PAMRnVD7A7\nZzsvo73ExHUkzYO7l6Z0hdkR/XIANYIC4p2HssQvmoZ39XTFaddJtgp/MEtSPyvB\n35OsqzyFSF4FwKMZwzQuWYoeKO8YXIXyZuinGaEmNasTmf+v2TElG+J2nzEx6tgh\nLmVldpjJFJWaK7VOhiSLIUyZlF77L0IaaVFqg6HMfxiaet3t2BiK7pGy3hFUiPw1\nEaXbxT090JMzZfJjmOCwONYdd9hIaiS9OxYMQm2chm+qE6LGKHM5XvfLKbLH0o96\n6Yfrvy6I4u2bwb9LrpK8aHYN5TVkoSINngrzShy4+QKBgQDnR4wP4CJBXG3wkQ0R\neU+0hQ1b6m698exoujg+I8b6JwR3CbMMUX07W5Z5x3JHOSpiUAcybuaLWdQZe0Ow\nK5WSwl7qFO52x3P4gJqDrJ3/8XLGNQdVr3U/GZ5xKtwnff4jdQpHYsCpWjTqyg1p\nvtoVfJs1/p9WxeE/SyFVoQZVywKBgQDi5zuOWau2bdp2+LyZNxq2w/psUOST/Oee\nCVzeHX+2sf5jnazQCxIqA9z0AXvXeiU3s8J3QSoFmLRjIfMaMUgEhlxajrEqReJN\nNUPoHS1CnH+/AyjSqKlgIYgjUo0ujF0oqbkHz/fmgB5Dmgur8LpX1N1noI+mLRKO\n/HfmOaPQOQKBgDjPSEY2BfQMIi0vVAhwxfVPoWJsiVs665kl9N6+pweXQe+DgGmM\nMri73JB5P0bjcdfIVJw8xYCBRiokLxI9AnaULABPt+uRPplR7aJeakkOI+Uv7WdM\nu/4N6u9dWcqRljVbcHTseuqeb9UkYHsTGDqi6vUuYDFOVe/YIo4ICahVAoGAIJN0\nIHbNSU6yO7xwT0rzAeRXEq/2cSyxECZl99miWVdqn2Cmy+ObAv80/K8t2XzG1R1w\nwPBRGSaYV1crcMo8fbHQlou/8cLAv7by/eMaeWLAkGritIPUdWG7Ct8yN8mdIlZj\nozR/cc9ZCPmXzWKtTijYdKU/mmsELBUhHaOO2jkCgYAcz0oGXdXbX7SOGdAth8TH\n8FJkkMtsIbaf1te+fFU8TMfeLtyK6VmKzBgsJTxViVcQK0zacIDDQ+g9ZgXUoAnT\n1EwdSKF9QSICa9QMUqCcIMknbFpAG6TRD+6nO7NH7eoG6aTJc+bKNeXwOvIjbX1t\nRzXHt0XeFm6x5z0UGun11g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "skye-538@skyebot.iam.gserviceaccount.com",
+  "client_id": "108388822550134284154",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/skye-538%40skyebot.iam.gserviceaccount.com"
+}
