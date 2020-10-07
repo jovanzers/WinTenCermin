@@ -111,6 +111,25 @@ def main():
             restart_message = pickle.load(status)
         restart_message.edit_text("Restart berhasil!")
         remove('restart.pickle')
+
+    start_handler = CommandHandler(BotCommands.StartCommand, start,
+                                   filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
+    ping_handler = CommandHandler(BotCommands.PingCommand, ping,
+                                  filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
+    restart_handler = CommandHandler(BotCommands.RestartCommand, restart,
+                                     filters=CustomFilters.owner_filter)
+    help_handler = CommandHandler(BotCommands.HelpCommand,
+                                  bot_help, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
+    stats_handler = CommandHandler(BotCommands.StatsCommand,
+                                   stats, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
+    log_handler = CommandHandler(BotCommands.LogCommand, log, filters=CustomFilters.owner_filter)
+    dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(ping_handler)
+    dispatcher.add_handler(restart_handler)
+    dispatcher.add_handler(help_handler)
+    dispatcher.add_handler(stats_handler)
+    dispatcher.add_handler(log_handler)
+    updater.start_polling()
     LOGGER.info("Bot Started!")
     signal.signal(signal.SIGINT, fs_utils.exit_clean_up)
 
