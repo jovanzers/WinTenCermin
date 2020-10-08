@@ -75,7 +75,7 @@ Do the Following
 1. Fork this Repo
 2. Credentials.json & Token Pickle
 3. User Session String.
-4. Click on Deploy Button, and fill the Fields then deploy app.
+4. Deploy.
 
 ```
 
@@ -123,9 +123,8 @@ To get user session string use this command :
 ```
 STEP 4
 ## Deploying
-CLICK DEPLOY BUTTON ON YOUR FORKED REPO. THATS IT !
+Deploy on your own server
 ```
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
 # How to deploy? Legacy Method
