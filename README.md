@@ -1,4 +1,4 @@
-# ⚠️ Drop Heroku Support
+# ❌ Drop Heroku Support
 Since heroku started banning [magneto](https://github.com/magneto261290/magneto-python-aria) repo, we've decided to stop heroku support.
 
 # Important - Read these points first
