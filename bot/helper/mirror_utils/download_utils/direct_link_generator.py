@@ -118,7 +118,8 @@ def mediafire(url: str) -> str:
 
 
 def uptobox(url: str) -> str:
-    """ Uptobox direct links generator """
+    """ Uptobox direct links generator
+    based on https://github.com/jovanzers/WinTenCermin """
     try:
         link = re.findall(r'\bhttps?://.*uptobox\.com\S+', url)[0]
     except IndexError:
@@ -132,7 +133,7 @@ def uptobox(url: str) -> str:
             logging.info('Uptobox direct link')
             dl_url = url
         except:
-            file_id = url.split('/')[-1]
+            file_id = re.findall(r'\bhttps?://.*uptobox\.com/(\w+)', url)[0]
             file_link = 'https://uptobox.com/api/link?token=%s&file_code=%s' % (UPTOBOX_TOKEN, file_id)
             req = requests.get(file_link)
             result = req.json()
