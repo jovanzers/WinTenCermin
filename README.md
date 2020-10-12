@@ -26,7 +26,7 @@ Since heroku started banning [magneto](https://github.com/magneto261290/magneto-
 ```
 
 # What is this repo about?
-This is a telegram bot writen in python for mirroring files on the internet to our beloved Google Drive.
+This is a telegram bot written in python for mirroring files on the internet to our beloved Google Drive.
 
 # Inspiration 
 This project is heavily inspired from @out386 's telegram bot which is written in JS.
