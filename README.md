@@ -1,5 +1,5 @@
-# ❌ Drop Heroku Support
-Since heroku started banning [magneto](https://github.com/magneto261290/magneto-python-aria) repo, we've decided to stop heroku support.
+# ❌ Banned on Heroku
+This repo is forked from [magneto](https://github.com/magneto261290/magneto-python-aria) repo, and you will got directly banned on Heroku for deploying this.
 
 # Important - Read these points first
 - Original repo is https://github.com/lzzy12/python-aria-mirror-bot
