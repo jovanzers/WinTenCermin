@@ -185,6 +185,7 @@ python3 generate_string_session.py
 - **UPTOBOX_TOKEN**: (Optional field) Uptobox token to mirror uptobox links. Get it from [Uptobox Premium Account](https://uptobox.com/my_account)
 - **STOP_DUPLICATE_MIRROR**: (Optional field) (Leave empty if unsure) if this field is set to `True` , bot will check file in drive, if it is present in drive, downloading will ne stopped. (Note - File will be checked using filename, not using filehash, so this feature is not perfect yet)
 - **BLOCK_MEGA_LINKS**: (Optional field) If you want to remove mega.nz mirror support (bcoz it's too much buggy and unstable), set it to `True`.
+- **BLOCK_MEGA_FOLDER**: (Optional field) If you want to remove mega.nz folder support, set it to `True`.
 - **SHORTENER**: (Optional field) if you want to use shortener in Gdrive and index link, fill shotener url here. Examples :-
 
 > exe.io
