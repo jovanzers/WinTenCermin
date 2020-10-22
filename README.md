@@ -1,5 +1,5 @@
-# ❌ Drop Heroku Support
-Since heroku started banning [magneto](https://github.com/magneto261290/magneto-python-aria) repo, we've decided to stop heroku support.
+# ❌ Banned on Heroku
+This repo is forked from [magneto](https://github.com/magneto261290/magneto-python-aria) repo, and you will got directly banned on Heroku for deploying this.
 
 # Important - Read these points first
 - Original repo is https://github.com/lzzy12/python-aria-mirror-bot
@@ -179,12 +179,13 @@ python3 generate_telegraph_token.py
 ```
 python3 generate_string_session.py
 ```
-- **UPTOBOX_TOKEN**: Uptobox token to mirror uptobox links. Get it from [Uptobox Premium Account](https://uptobox.com/my_account)
 - **MEGA_API_KEY**: Mega.nz api key to mirror mega.nz links. Get it from [Mega SDK Page](https://mega.nz/sdk)
 - **MEGA_EMAIL_ID**: Your email id you used to sign up on mega.nz for using premium accounts (Leave th)
 - **MEGA_PASSWORD**: Your password for your mega.nz account 
+- **UPTOBOX_TOKEN**: (Optional field) Uptobox token to mirror uptobox links. Get it from [Uptobox Premium Account](https://uptobox.com/my_account)
 - **STOP_DUPLICATE_MIRROR**: (Optional field) (Leave empty if unsure) if this field is set to `True` , bot will check file in drive, if it is present in drive, downloading will ne stopped. (Note - File will be checked using filename, not using filehash, so this feature is not perfect yet)
 - **BLOCK_MEGA_LINKS**: (Optional field) If you want to remove mega.nz mirror support (bcoz it's too much buggy and unstable), set it to `True`.
+- **BLOCK_MEGA_FOLDER**: (Optional field) If you want to remove mega.nz folder support, set it to `True`.
 - **SHORTENER**: (Optional field) if you want to use shortener in Gdrive and index link, fill shotener url here. Examples :-
 
 > exe.io
