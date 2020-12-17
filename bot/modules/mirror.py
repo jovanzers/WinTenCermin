@@ -5,7 +5,7 @@ from telegram import InlineKeyboardMarkup
 from bot import Interval, INDEX_URL, BUTTON_THREE_NAME, BUTTON_THREE_URL, BUTTON_FOUR_NAME, BUTTON_FOUR_URL, BUTTON_FIVE_NAME, BUTTON_FIVE_URL, BLOCK_MEGA_LINKS, BLOCK_MEGA_FOLDER
 from bot import dispatcher, DOWNLOAD_DIR, DOWNLOAD_STATUS_UPDATE_INTERVAL, download_dict, download_dict_lock, SHORTENER, SHORTENER_API
 from bot.helper.ext_utils import fs_utils, bot_utils
-from bot.helper.ext_utils.bot_utils import setInterval, get_mega_link_type
+from bot.helper.ext_utils.bot_utils import setInterval, get_mega_link_type, get_readable_file_size
 from bot.helper.ext_utils.exceptions import DirectDownloadLinkException, NotSupportedExtractionArchive
 from bot.helper.mirror_utils.download_utils.aria2_download import AriaDownloadHelper
 from bot.helper.mirror_utils.download_utils.mega_downloader import MegaDownloadHelper
@@ -196,6 +196,17 @@ class MirrorListener(listeners.MirrorListeners):
 
 
 def _mirror(bot, update, isTar=False, extract=False):
+    if update.message.from_user.last_name:
+        last_name = f" {update.message.from_user.last_name}"
+    else:
+        last_name = ""
+    if update.message.from_user.username:
+        username = f"- @{update.message.from_user.username}"
+    else:
+        username = "-"
+    name = f'<a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}{last_name}</a>'
+    msg = f"User: {name} {username} (<code>{update.message.from_user.id}</code>)\n"
+
     message_args = update.message.text.split(' ')
     try:
         link = message_args[1]
@@ -219,6 +230,8 @@ def _mirror(bot, update, isTar=False, extract=False):
                     listener = MirrorListener(bot, update, isTar, tag)
                     tg_downloader = TelegramDownloadHelper(listener)
                     tg_downloader.add_download(reply_to, f'{DOWNLOAD_DIR}{listener.uid}/')
+                    msg += f"Message: <code>{file.mime_type}</code> | <code>{download_dict[listener.uid].name()}</code> | {download_dict[listener.uid].size()}"
+                    sendMessage(msg, bot, update)
                     sendStatusMessage(update, bot)
                     if len(Interval) == 0:
                         Interval.append(setInterval(DOWNLOAD_STATUS_UPDATE_INTERVAL, update_all_messages))
@@ -245,9 +258,16 @@ def _mirror(bot, update, isTar=False, extract=False):
         else:
             mega_dl = MegaDownloadHelper()
             mega_dl.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener)
+            msg += f"Message: {update.message.text}"
+            sendMessage(msg, bot, update)
             sendStatusMessage(update, bot)
     else:
         ariaDlManager.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener)
+        if reply_to is not None:
+            msg += f"Message: <code>{file.mime_type}</code> | <code>{file.file_name}</code> | {get_readable_file_size(file.file_size)}"
+        else:
+            msg += f"Message: {update.message.text}"
+        sendMessage(msg, bot, update)
         sendStatusMessage(update, bot)
     if len(Interval) == 0:
         Interval.append(setInterval(DOWNLOAD_STATUS_UPDATE_INTERVAL, update_all_messages))

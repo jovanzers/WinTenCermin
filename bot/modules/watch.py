@@ -11,6 +11,16 @@ import threading
 
 
 def _watch(bot: Bot, update: Update, args: list, isTar=False):
+    if update.message.from_user.last_name:
+        last_name = f" {update.message.from_user.last_name}"
+    else:
+        last_name = ""
+    if update.message.from_user.username:
+        username = f"- @{update.message.from_user.username}"
+    else:
+        username = "-"
+    name = f'<a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}{last_name}</a>'
+
     try:
         link = args[0]
     except IndexError:
@@ -25,6 +35,9 @@ def _watch(bot: Bot, update: Update, args: list, isTar=False):
     listener = MirrorListener(bot, update, isTar, tag)
     ydl = YoutubeDLHelper(listener)
     threading.Thread(target=ydl.add_download,args=(link, f'{DOWNLOAD_DIR}{listener.uid}')).start()
+    msg = f"User: {name} {username} (<code>{update.message.from_user.id}</code>)\n" \
+          f"Message: {update.message.text}"
+    sendMessage(msg, bot, update)
     sendStatusMessage(update, bot)
     if len(Interval) == 0:
         Interval.append(setInterval(DOWNLOAD_STATUS_UPDATE_INTERVAL, update_all_messages))
