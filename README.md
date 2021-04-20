@@ -38,7 +38,7 @@ Note :- it is not a Bot Support group. It's only for discussing rubbish things b
 ```
 
 # What is this repo about?
-This is a telegram bot writen in python for mirroring files on the internet to our beloved Google Drive.
+This is a telegram bot written in python for mirroring files on the internet to our beloved Google Drive.
 
 # Inspiration 
 This project is heavily inspired from @out386 's telegram bot which is written in JS.
