@@ -208,10 +208,15 @@ def _mirror(bot, update, isTar=False, extract=False):
     msg = f"User: {name} {username} (<code>{update.message.from_user.id}</code>)\n"
 
     message_args = update.message.text.split(' ')
+    name_args = update.message.text.split('|')
     try:
         link = message_args[1]
     except IndexError:
         link = ''
+    try:
+        name = name_args[1]
+    except IndexError:
+        name = ''
     LOGGER.info(link)
     link = link.strip()
     reply_to = update.message.reply_to_message
@@ -224,12 +229,12 @@ def _mirror(bot, update, isTar=False, extract=False):
                 file = i
                 break
 
-        if len(link) == 0:
+        if not bot_utils.is_url(link) and not bot_utils.is_magnet(link) or len(link) == 0:
             if file is not None:
                 if file.mime_type != "application/x-bittorrent":
                     listener = MirrorListener(bot, update, isTar, tag)
                     tg_downloader = TelegramDownloadHelper(listener)
-                    tg_downloader.add_download(reply_to, f'{DOWNLOAD_DIR}{listener.uid}/')
+                    tg_downloader.add_download(reply_to, f'{DOWNLOAD_DIR}{listener.uid}/', name)
                     msg += f"Message: <code>{file.mime_type}</code> | <code>{download_dict[listener.uid].name()}</code> | {download_dict[listener.uid].size()}"
                     sendMessage(msg, bot, update)
                     sendStatusMessage(update, bot)
@@ -257,12 +262,12 @@ def _mirror(bot, update, isTar=False, extract=False):
             sendMessage("Mega links are blocked bcoz mega downloading is too much unstable and buggy. mega support will be added back after fix", bot, update)
         else:
             mega_dl = MegaDownloadHelper()
-            mega_dl.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener)
+            mega_dl.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener, name)
             msg += f"Message: {update.message.text}"
             sendMessage(msg, bot, update)
             sendStatusMessage(update, bot)
     else:
-        ariaDlManager.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener)
+        ariaDlManager.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener, name)
         if reply_to is not None:
             msg += f"Message: <code>{file.mime_type}</code> | <code>{file.file_name}</code> | {get_readable_file_size(file.file_size)}"
         else:
