@@ -7,7 +7,6 @@ from bot.helper.ext_utils.bot_utils import new_thread
 from bot import dispatcher
 
 
-@new_thread
 def cloneNode(update,context):
     if update.message.from_user.last_name:
         last_name = f" {update.message.from_user.last_name}"
@@ -36,5 +35,5 @@ def cloneNode(update,context):
     else:
         sendMessage("Provide G-Drive Shareable Link to Clone.",context.bot,update)
 
-clone_handler = CommandHandler(BotCommands.CloneCommand,cloneNode,filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
+clone_handler = CommandHandler(BotCommands.CloneCommand,cloneNode,filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 dispatcher.add_handler(clone_handler)
