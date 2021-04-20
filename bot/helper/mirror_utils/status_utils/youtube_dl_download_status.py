@@ -49,7 +49,7 @@ class YoutubeDLDownloadStatus(Status):
         try:
             seconds = (self.size_raw() - self.processed_bytes()) / self.speed_raw()
             return f'{get_readable_time(seconds)}'
-        except ZeroDivisionError:
+        except:
             return '-'
 
     def download(self):

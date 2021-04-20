@@ -217,10 +217,15 @@ def _mirror(bot, update, isTar=False, extract=False):
     name_args = update.message.text.split('|')
     try:
         link = message_args[1]
+        if link.startswith("|") or link.startswith("pswd: "):
+            link = ''
     except IndexError:
         link = ''
     try:
         name = name_args[1]
+        name = name.strip()
+        if name.startswith("pswd: "):
+            name = ''
     except IndexError:
         name = ''
     pswd = re.search('(?<=pswd: )(.*)', update.message.text)
@@ -272,7 +277,7 @@ def _mirror(bot, update, isTar=False, extract=False):
             sendMessage("Mega links are blocked bcoz mega downloading is too much unstable and buggy. mega support will be added back after fix", bot, update)
         else:
             mega_dl = MegaDownloadHelper()
-            mega_dl.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener, name)
+            mega_dl.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener)
             msg += f"Message: {update.message.text}"
             sendMessage(msg, bot, update)
             sendStatusMessage(update, bot)
