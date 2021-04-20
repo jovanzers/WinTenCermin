@@ -6,6 +6,7 @@ import time
 import aria2p
 import telegram.ext as tg
 from dotenv import load_dotenv
+from pyrogram import Client
 import socket
 import faulthandler
 faulthandler.enable()
@@ -85,6 +86,7 @@ except KeyError as e:
     exit(1)
 
 app = Client(':memory:', api_id=int(TELEGRAM_API), api_hash=TELEGRAM_HASH, bot_token=BOT_TOKEN)
+
 try:
     UPTOBOX_TOKEN = getConfig('UPTOBOX_TOKEN')
 except KeyError:
