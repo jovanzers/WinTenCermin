@@ -87,73 +87,13 @@ help - Get Detailed Help
 log - Bot Log [owner only]
 ```
 
-# How to deploy? Simple Method
-Deploying is pretty much straight forward and is divided into several steps as follows:
-## Installing requirements
-```
-Do the Following
-1. Fork this Repo
-2. Credentials.json & Token Pickle
-3. User Session String.
-4. Deploy.
-
-```
-
-```
-STEP 1 :
-Signup or Login to your account then :
-- Fork this repo
-After forked, you need to upload Credentials.json, token.pickle and token_sa.pickle to your forked repo.
-If Using SA's you will also need to upload your accounts folrder.
-
-Proceed to step 2
-
-```
-
-```
-STEP 2 :
-
-## Getting Google OAuth API credential file
-
-- Visit the [Google Cloud Console](https://console.developers.google.com/apis/credentials)
-- Go to the OAuth Consent tab, fill it, and save.
-- Go to the Credentials tab and click Create Credentials -> OAuth Client ID
-- Choose Other and Create.
-- Use the download button to download your credentials.
-- Move that file to the root of mirror-bot, and rename it to credentials.json
-- Visit [Google API page](https://console.developers.google.com/apis/library)
-- Search for Drive and enable it if it is disabled
-
-- Finally, run the script to generate token file (token.pickle) for Google Drive:
-pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
-python3 generate_drive_token.py
-
-Right now we have 
-Credentials.json and token.pickle.. so Upload these files to your forked repo.
-```
-
-
-
-```
-STEP 3 :
-To get user session string use this command :
-   python3 generate_string_session.py
-```
-
-```
-STEP 4
-## Deploying
-Deploy on your own server
-```
-
-
-# How to deploy? Legacy Method
+# How to deploy?
 Deploying is pretty much straight forward and is divided into several steps as follows:
 ## Installing requirements
 
 - Clone this repo:
 ```
-git clone https://github.com/magneto261290/magneto-python-aria mirror-bot/
+git clone https://github.com/WinTenDev/WinTenCermin mirror-bot/
 cd mirror-bot
 ```
 
@@ -193,7 +133,7 @@ python3 generate_telegraph_token.py
 - **INDEX_URL** : (Optional field) Refer to https://github.com/maple3142/GDIndex/ The URL should not have any trailing '/'
 - **API_KEY** : This is to authenticate to your telegram account for downloading Telegram files. You can get this from https://my.telegram.org DO NOT put this in quotes.
 - **API_HASH** : This is to authenticate to your telegram account for downloading Telegram files. You can get this from https://my.telegram.org
-- **USER_SESSION_STRING** : Generate String session by [clicking here](https://generatestringsession.magneto261290.repl.run/) **OR** you can generate by running :
+- **USER_SESSION_STRING** : Generate String session by [clicking here](https://replit.com/@Magneto261290/GenerateStringSession?lite=1&outputonly=1) **OR** you can generate by running :
 ```
 python3 generate_string_session.py
 ```
