@@ -31,7 +31,7 @@ def cloneNode(update, context):
         if button == "":
             sendMessage(result, context.bot, update)
         else:
-            sendMarkup(result,context.bot,update,button)
+            result += f"\n\ncc : {msg_user}"
             sendMarkup(result, context.bot, update, button)
     else:
         sendMessage("Provide G-Drive Shareable Link to Clone.", context.bot, update)
