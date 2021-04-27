@@ -16,18 +16,18 @@ def cloneNode(update,context):
         username = f"- @{update.message.from_user.username}"
     else:
         username = "-"
-    name = f'<a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}{last_name}</a>'
+    name = f"<a href='tg://user?id={update.message.from_user.id}'>{update.message.from_user.first_name}{last_name}</a>"
+    msg_user = f"{name} {username} (<code>{update.message.from_user.id}</code>)"
 
     args = update.message.text.split(" ",maxsplit=1)
     if len(args) > 1:
         link = args[1]
-        msg = f"Cloning..." \
-              f"User: {name} {username} (<code>{update.message.from_user.id}</code>)\n" \
-              f"Message: {update.message.text}"
+        msg = f"User: {msg_user}\nMessage: {update.message.text}"
         sendMessage(msg, context.bot, update)
+        msg = sendMessage(f"Cloning...", context.bot, update)
         gd = GoogleDriveHelper()
         result, button = gd.clone(link)
-        # deleteMessage(context.bot,msg)
+        deleteMessage(context.bot,msg)
         if button == "":
             sendMessage(result,context.bot,update)
         else:
