@@ -58,9 +58,9 @@ def unauthorize(update,context):
 
 
 authorize_handler = CommandHandler(command=BotCommands.AuthorizeCommand, callback=authorize,
-                                   filters=CustomFilters.owner_filter & Filters.group, run_async=True)
+                                   filters=CustomFilters.owner_filter & Filters.chat_type.groups, run_async=True)
 unauthorize_handler = CommandHandler(command=BotCommands.UnAuthorizeCommand, callback=unauthorize,
-                                     filters=CustomFilters.owner_filter & Filters.group, run_async=True)
+                                     filters=CustomFilters.owner_filter & Filters.chat_type.groups, run_async=True)
 dispatcher.add_handler(authorize_handler)
 dispatcher.add_handler(unauthorize_handler)
 
